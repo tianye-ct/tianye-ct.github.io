@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React with Tianye here!
+          Learn React with Auto Deployment here!
         </a>
       </header>
     </div>
