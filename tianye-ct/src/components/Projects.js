@@ -1,4 +1,4 @@
-import { Box, Heading, SimpleGrid, Image, Text } from "@chakra-ui/react";
+import { Box, Heading, Image, Text } from "@chakra-ui/react";
 
 const Projects = () => (
   <Box

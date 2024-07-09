@@ -2,14 +2,13 @@ import React from "react";
 import {
   Box,
   Text,
-  VStack,
   HStack,
   Button,
   IconButton,
   Tooltip
 } from "@chakra-ui/react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
-import { motion } from "framer-motion";
+
 
 // const MotionBox = motion(Box);
 // const MotionText = motion(Text);
