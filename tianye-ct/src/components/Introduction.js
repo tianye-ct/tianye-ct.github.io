@@ -35,7 +35,7 @@ const Introduction = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-           I'm Tianye Fan, a skilled Software Engineer and Machine Learning Engineer.
+           I'm Tianye Fan, a recent graduated Software Engineer and Machine Learning Engineer.
            I collaborate with global cooperations to develop innovative, data-driven solutions 
            that optimize performance and achieve strategic objectives.
         </MotionText>
