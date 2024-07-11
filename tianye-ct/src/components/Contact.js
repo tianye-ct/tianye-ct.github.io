@@ -2,19 +2,22 @@ import React from "react";
 import {
   Box,
   Text,
+  VStack,
   HStack,
   Button,
   IconButton,
-  Tooltip
+  chakra,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 
-
-// const MotionBox = motion(Box);
-// const MotionText = motion(Text);
-// const MotionButton = motion(Button);
+const ChakraLinkedIn = chakra(FaLinkedin);
+const ChakraGithub = chakra(FaGithub);
 
 const Contact = () => {
+  const iconStackDirection = useBreakpointValue({ base: "column", md: "row" });
+  const iconSpacing = useBreakpointValue({ base: 4, md: 10 });
+
   return (
     <Box
       id="contact"
@@ -27,17 +30,24 @@ const Contact = () => {
       backgroundColor="white"
       fontFamily="'Helvetica Neue', Arial, sans-serif"
     >
-      <HStack spacing={8} mb={8}>
+      <HStack
+        spacing={iconSpacing}
+        mb={8}
+        align="center"
+        flexDirection={iconStackDirection}
+      >
         <IconButton
           as="a"
           href="https://www.linkedin.com/in/tianyefan"
           target="_blank"
           aria-label="LinkedIn"
-          icon={<FaLinkedin />}
+          icon={<ChakraLinkedIn size={40} />}
           variant="outline"
-          size="lg"
+          width={{ base: "60px", md: "80px" }}
+          height={{ base: "60px", md: "80px" }}
           borderRadius="full"
           color="black"
+          borderColor="black"
           _hover={{ backgroundColor: "black", color: "white" }}
         />
         <IconButton
@@ -45,22 +55,43 @@ const Contact = () => {
           href="https://github.com/tianye-ct"
           target="_blank"
           aria-label="GitHub"
-          icon={<FaGithub />}
+          icon={<ChakraGithub size={40} />}
           variant="outline"
-          size="lg"
           borderRadius="full"
+          borderColor="black"
           color="black"
+          width={{ base: "60px", md: "80px" }}
+          height={{ base: "60px", md: "80px" }}
           _hover={{ backgroundColor: "black", color: "white" }}
         />
       </HStack>
-      <Text fontSize="4xl" fontWeight="bold">
+      <Text
+        fontSize={{ base: "2xl", md: "5xl" }}
+        fontWeight={400}
+        textAlign="center"
+        mb={4}
+      >
         Looking for a Software Engineer?
       </Text>
-      <Tooltip label="richardye980718@gmail.com" aria-label="Email tooltip">
-        <Button variant="outline" size="lg" borderRadius="full" mt={8}>
+      <Box
+        as="a"
+        href="mailto:tf275@cornell.edu"
+        mt={8}
+        display="inline-block"
+      >
+        <Button
+          width={{ base: "200px", md: "300px" }}
+          height={{ base: "60px", md: "100px" }}
+          variant="outline"
+          fontSize={{ base: "20px", md: "35px" }}
+          fontWeight={200}
+          borderRadius="full"
+          borderColor="black"
+          _hover={{ bgColor: "black", color: "white", borderColor: "white" }}
+        >
           Get In Touch
         </Button>
-      </Tooltip>
+      </Box>
     </Box>
   );
 };

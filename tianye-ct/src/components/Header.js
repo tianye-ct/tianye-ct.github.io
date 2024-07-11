@@ -1,30 +1,50 @@
-import { Flex, Link as ChakraLink, Heading } from "@chakra-ui/react";
+import { Flex, Link as ChakraLink, Heading, Text } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+
+const MotionFlex = motion(Flex);
 
 const Header = () => (
-  <Flex
+  <MotionFlex
     as="nav"
     justify="space-between"
-    padding="20px"
+    alignItems="center"
+    padding={{ base: "20px", md: "30px" }} // Reduced padding for smaller height
     bg="white"
     position="fixed"
+    top="0"
     width="100%"
     zIndex="1"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1, delay: 2 }}
   >
-    <Heading as="h1" size="lg" m={5}>
+    <Heading
+      size="2xl"
+      m={3}
+      fontWeight={400}
+      textAlign={{ base: "center", md: "left" }} // Center on mobile, left on larger screens
+      width={{ base: "100%", md: "auto" }} // Full width on mobile
+    >
       Tianye @ 24{" "}
     </Heading>
-    <Flex m={5}>
-      <ChakraLink href="" m={5}>
-        Intro
+    <Flex m={3} display={{ base: "none", md: "flex" }}> {/* Hide on mobile */}
+      <ChakraLink href="" m={3}>
+        <Text fontSize={25} fontFamily="sans-serif">
+          Intro
+        </Text>
       </ChakraLink>
-      <ChakraLink href="#projects" m={5}>
-        Projects
+      <ChakraLink href="#projects" m={3}>
+        <Text fontSize={25} fontFamily="sans-serif">
+          Project
+        </Text>
       </ChakraLink>
-      <ChakraLink href="#contact" m={5}>
-        Contact
+      <ChakraLink href="#contact" m={3}>
+        <Text fontSize={25} fontFamily="sans-serif">
+          Contact
+        </Text>
       </ChakraLink>
     </Flex>
-  </Flex>
+  </MotionFlex>
 );
 
 export default Header;
