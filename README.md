@@ -23,12 +23,4 @@ This personal website serves as an online portfolio to present my background, sk
 - **Projects Section:** Showcase of selected projects with descriptions and links.
 - **Contact Section:** Contact information with links to social media profiles.
 
-## Installation
 
-To run this project locally, follow these steps:
-
-1. **Clone the repository:**
-
-   ```sh
-   git clone https://github.com/tianyefan/personal-website.git
-   cd personal-website
