@@ -10,7 +10,6 @@ const Header = () => (
     alignItems="center"
     padding={{ base: "20px", md: "30px" }} // Reduced padding for smaller height
     bg="white"
-    position="fixed"
     top="0"
     width="100%"
     zIndex="1"
@@ -28,12 +27,12 @@ const Header = () => (
       Tianye @ 24{" "}
     </Heading>
     <Flex m={3} display={{ base: "none", md: "flex" }}> {/* Hide on mobile */}
-      <ChakraLink href="" m={3}>
+      <ChakraLink href="#contact" m={3}>
         <Text fontSize={25} fontFamily="sans-serif">
-          Intro
+          Contact
         </Text>
       </ChakraLink>
-      <ChakraLink href="#projects" m={3}>
+      {/* <ChakraLink href="#projects" m={3}>
         <Text fontSize={25} fontFamily="sans-serif">
           Project
         </Text>
@@ -42,7 +41,7 @@ const Header = () => (
         <Text fontSize={25} fontFamily="sans-serif">
           Contact
         </Text>
-      </ChakraLink>
+      </ChakraLink> */}
     </Flex>
   </MotionFlex>
 );

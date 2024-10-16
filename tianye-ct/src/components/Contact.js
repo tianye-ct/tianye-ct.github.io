@@ -20,7 +20,7 @@ const Contact = () => {
   return (
     <Box
       id="contact"
-      height="60vh"
+      height="40vh"
       display="flex"
       flexDirection="column"
       alignItems="center"
