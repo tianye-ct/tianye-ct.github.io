@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Box, Text, VStack, HStack, keyframes, Link as ChakraLink } from "@chakra-ui/react";
+import { Box, Text, VStack, keyframes, Link as ChakraLink, useColorModeValue } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link as RouterLink } from "react-router-dom";
 
 const MotionBox = motion(Box);
-const MotionText = motion(Text);
 
 // Shimmer animation keyframes
 const shimmer = keyframes`
@@ -13,16 +12,6 @@ const shimmer = keyframes`
   }
   100% {
     background-position: 200% center;
-  }
-`;
-
-// Gradient animation
-const gradientShift = keyframes`
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
   }
 `;
 
@@ -84,6 +73,21 @@ const TypewriterText = ({ text, delay = 0, speed = 50, onComplete, showCursor = 
 const Introduction = () => {
   const [showSecondLine, setShowSecondLine] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
+  
+  const bgColor = useColorModeValue("white", "#1a1a1a");
+  const textColor = useColorModeValue("gray.900", "gray.100");
+  const borderColor = useColorModeValue("rgba(0, 0, 0, 0.15)", "rgba(255, 255, 255, 0.1)");
+  const shadowColor = useColorModeValue("rgba(0, 0, 0, 0.12)", "rgba(0, 0, 0, 0.5)");
+  const meshColor = useColorModeValue("rgba(0, 0, 0, 0.02)", "rgba(255, 255, 255, 0.02)");
+  const gradientOverlay = useColorModeValue(
+    "radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%)",
+    "radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%)"
+  );
+  const descriptionTextColor = useColorModeValue("gray.600", "gray.300");
+  const dividerGradient = useColorModeValue("linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent)", "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)");
+  const linkColor = useColorModeValue("gray.600", "gray.400");
+  const linkHoverColor = useColorModeValue("gray.900", "gray.100");
+  const linkBorderColor = useColorModeValue("gray.900", "gray.100");
 
   return (
     <MotionBox
@@ -92,7 +96,7 @@ const Introduction = () => {
       alignItems="center"
       justifyContent="center"
       padding={{ base: "10px", md: "20px" }}
-      background="white"
+      background={bgColor}
       fontFamily="'Playfair Display', 'Georgia', serif"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -106,7 +110,7 @@ const Introduction = () => {
         left: 0,
         right: 0,
         bottom: 0,
-        background: "radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%)",
+        background: gradientOverlay,
         pointerEvents: "none",
       }}
     >
@@ -123,15 +127,15 @@ const Introduction = () => {
             0deg,
             transparent,
             transparent 59px,
-            rgba(0, 0, 0, 0.02) 59px,
-            rgba(0, 0, 0, 0.02) 60px
+            ${meshColor} 59px,
+            ${meshColor} 60px
           ),
           repeating-linear-gradient(
             90deg,
             transparent,
             transparent 59px,
-            rgba(0, 0, 0, 0.02) 59px,
-            rgba(0, 0, 0, 0.02) 60px
+            ${meshColor} 59px,
+            ${meshColor} 60px
           )
         `}
         pointerEvents="none"
@@ -150,10 +154,10 @@ const Introduction = () => {
         py={{ base: 8, md: 12 }}
         gap={{ base: 12, md: 20, lg: 24 }}
         zIndex={1}
-        background="white"
+        background={bgColor}
         borderRadius="16px"
-        border="2px solid rgba(0, 0, 0, 0.15)"
-        boxShadow="0 8px 30px rgba(0, 0, 0, 0.12)"
+        border={`2px solid ${borderColor}`}
+        boxShadow={`0 8px 30px ${shadowColor}`}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
@@ -169,7 +173,7 @@ const Introduction = () => {
             align="flex-start" 
             spacing={{ base: 1, md: 2 }}
           >
-            <Box fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }} fontWeight={400} color="gray.900" lineHeight="1.1" fontFamily="'Playfair Display', 'Georgia', serif">
+            <Box fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }} fontWeight={400} color={textColor} lineHeight="1.1" fontFamily="'Playfair Display', 'Georgia', serif">
               <TypewriterText 
                 text="Software Engineer" 
                 delay={500} 
@@ -179,7 +183,7 @@ const Introduction = () => {
             </Box>
           
             {showSecondLine && (
-              <Box fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }} fontWeight={400} color="gray.900" lineHeight="1.1" fontFamily="'Playfair Display', 'Georgia', serif">
+              <Box fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }} fontWeight={400} color={textColor} lineHeight="1.1" fontFamily="'Playfair Display', 'Georgia', serif">
                 <Box display="inline">
                   <TypewriterText text="& " delay={200} speed={60} showCursor={false} />
                 </Box>
@@ -270,7 +274,7 @@ const Introduction = () => {
                 fontFamily="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
                 fontWeight={300}
                 lineHeight={1.8}
-                color="gray.600"
+                color={descriptionTextColor}
               >
                 I'm Tianye Fan, a recent graduate Software & AI Engineer. I am passionate about developing
                 innovative, data-driven solutions that leverage cutting-edge AI technologies to solve complex problems.
@@ -279,7 +283,7 @@ const Introduction = () => {
               {/* Premium divider */}
               <MotionBox
                 height="2px"
-                background="linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent)"
+                background={dividerGradient}
                 width="100%"
                 mt={8}
                 initial={{ scaleX: 0 }}
@@ -298,14 +302,14 @@ const Introduction = () => {
                   as={RouterLink}
                   to="/portfolio"
                   fontSize="sm"
-                  color="gray.600"
+                  color={linkColor}
                   fontWeight={500}
                   letterSpacing="wider"
                   textTransform="uppercase"
                   textDecoration="none"
                   position="relative"
                   _hover={{
-                    color: "gray.900",
+                    color: linkHoverColor,
                     "&::after": {
                       transform: "scaleX(1)",
                     }
@@ -317,7 +321,7 @@ const Introduction = () => {
                     left: "0",
                     right: "0",
                     height: "1px",
-                    background: "gray.900",
+                    background: linkBorderColor,
                     transform: "scaleX(0)",
                     transformOrigin: "left",
                     transition: "transform 0.3s ease",

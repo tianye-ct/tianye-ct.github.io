@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Heading, Text, VStack, HStack, Tag, Button } from '@chakra-ui/react';
+import { Box, Container, Heading, Text, VStack, HStack, Tag, Button, useColorModeValue } from '@chakra-ui/react';
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
@@ -8,6 +8,11 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const BlogPost = ({ post }) => {
+  const headingColor = useColorModeValue('black', 'white');
+  const dateColor = useColorModeValue('gray.600', 'gray.400');
+  const textColor = useColorModeValue('gray.700', 'gray.300');
+  const blockquoteBorderColor = useColorModeValue('gray.400', 'gray.600');
+  
   return (
     <Container maxW='container.md' pt={32} pb={10}>
       <Button
@@ -22,15 +27,15 @@ const BlogPost = ({ post }) => {
       
       <VStack spacing={6} align='stretch'>
         <Box>
-          <Heading as='h1' size='2xl' mb={4} fontFamily="'Playfair Display', 'Georgia', serif">
+          <Heading as='h1' size='2xl' mb={4} fontFamily="'Playfair Display', 'Georgia', serif" color={headingColor}>
             {post.title}
           </Heading>
           
           <HStack spacing={4} mb={4}>
-            <Text fontSize='sm' color='gray.600' fontFamily="'Georgia', 'Times New Roman', serif">
+            <Text fontSize='sm' color={dateColor} fontFamily="'Georgia', 'Times New Roman', serif">
               {post.date}
             </Text>
-            <Text fontSize='sm' color='gray.600' fontFamily="'Georgia', 'Times New Roman', serif">
+            <Text fontSize='sm' color={dateColor} fontFamily="'Georgia', 'Times New Roman', serif">
               {post.readTime}
             </Text>
           </HStack>
@@ -65,17 +70,17 @@ const BlogPost = ({ post }) => {
                   </code>
                 );
               },
-              h1: ({ children }) => <Heading as='h1' size='xl' my={4} fontFamily="'Playfair Display', 'Georgia', serif">{children}</Heading>,
-              h2: ({ children }) => <Heading as='h2' size='lg' my={4} fontFamily="'Playfair Display', 'Georgia', serif">{children}</Heading>,
-              h3: ({ children }) => <Heading as='h3' size='md' my={3} fontFamily="'Playfair Display', 'Georgia', serif">{children}</Heading>,
-              p: ({ children }) => <Text mb={4} fontFamily="'Georgia', 'Times New Roman', serif" lineHeight={1.8}>{children}</Text>,
+              h1: ({ children }) => <Heading as='h1' size='xl' my={4} fontFamily="'Playfair Display', 'Georgia', serif" color={headingColor}>{children}</Heading>,
+              h2: ({ children }) => <Heading as='h2' size='lg' my={4} fontFamily="'Playfair Display', 'Georgia', serif" color={headingColor}>{children}</Heading>,
+              h3: ({ children }) => <Heading as='h3' size='md' my={3} fontFamily="'Playfair Display', 'Georgia', serif" color={headingColor}>{children}</Heading>,
+              p: ({ children }) => <Text mb={4} fontFamily="'Georgia', 'Times New Roman', serif" lineHeight={1.8} color={textColor}>{children}</Text>,
               ul: ({ children }) => <Box as='ul' pl={6} mb={4}>{children}</Box>,
               ol: ({ children }) => <Box as='ol' pl={6} mb={4}>{children}</Box>,
               li: ({ children }) => <Box as='li' mb={2}>{children}</Box>,
               blockquote: ({ children }) => (
                 <Box
                   borderLeftWidth='4px'
-                  borderLeftColor='blue.500'
+                  borderLeftColor={blockquoteBorderColor}
                   pl={4}
                   py={2}
                   my={4}

@@ -8,9 +8,15 @@ const MotionBox = motion(Box);
 const BlogList = ({ posts }) => {
   const borderColor = useColorModeValue('gray.200', 'gray.700');
   const hoverBg = useColorModeValue('gray.50', 'gray.800');
+  const headingColor = useColorModeValue('black', 'white');
+  const dateColor = useColorModeValue('gray.600', 'gray.400');
+  const textColor = useColorModeValue('gray.700', 'gray.300');
 
   return (
     <Container maxW='container.xl' pt={32} pb={20}>
+      <Heading as='h1' size='2xl' mb={8} fontFamily="'Playfair Display', 'Georgia', serif" color={headingColor}>
+        Blog
+      </Heading>
       <VStack spacing={6} align='stretch'>
         {posts.map((post, index) => (
           <MotionBox
@@ -32,15 +38,15 @@ const BlogList = ({ posts }) => {
                 _hover={{ bg: hoverBg, transform: 'translateY(-2px)' }}
                 transition='all 0.2s'
               >
-                <Heading as='h2' size='lg' mb={2} fontFamily="'Playfair Display', 'Georgia', serif">
+                <Heading as='h2' size='lg' mb={2} fontFamily="'Playfair Display', 'Georgia', serif" color={headingColor}>
                   {post.title}
                 </Heading>
                 
-                <Text fontSize='md' color='gray.600' mb={3} fontFamily="'Georgia', 'Times New Roman', serif">
+                <Text fontSize='md' color={dateColor} mb={3} fontFamily="'Georgia', 'Times New Roman', serif">
                   {post.date} • {post.readTime}
                 </Text>
                 
-                <Text mb={3} noOfLines={2} fontFamily="'Georgia', 'Times New Roman', serif" lineHeight={1.6}>
+                <Text mb={3} noOfLines={2} fontFamily="'Georgia', 'Times New Roman', serif" lineHeight={1.6} color={textColor}>
                   {post.excerpt}
                 </Text>
                 
