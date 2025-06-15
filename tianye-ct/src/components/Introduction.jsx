@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Box, Text, VStack, HStack, keyframes } from "@chakra-ui/react";
+import { Box, Text, VStack, HStack, keyframes, Link as ChakraLink } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link as RouterLink } from "react-router-dom";
 
 const MotionBox = motion(Box);
 const MotionText = motion(Text);
@@ -31,11 +32,6 @@ const blink = keyframes`
   51%, 100% { opacity: 0; }
 `;
 
-// Float animation
-const float = keyframes`
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-`;
 
 // Typewriter component
 const TypewriterText = ({ text, delay = 0, speed = 50, onComplete, showCursor = true }) => {
@@ -65,35 +61,29 @@ const TypewriterText = ({ text, delay = 0, speed = 50, onComplete, showCursor = 
   }, [displayedText, text, speed, isTyping, onComplete]);
 
   return (
-    <Box display="inline-block" position="relative">
+    <>
       {displayedText}
       {showCursor && !isComplete && (
         <Box
           as="span"
           display="inline-block"
           width="3px"
-          height="1.2em"
+          height="0.9em"
           bg="currentColor"
           ml={1}
           animation={`${blink} 1s infinite`}
+          verticalAlign="baseline"
+          position="relative"
+          top="-0.1em"
         />
       )}
-    </Box>
+    </>
   );
 };
 
 const Introduction = () => {
   const [showSecondLine, setShowSecondLine] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
-  const [showFloatingElements, setShowFloatingElements] = useState(false);
-
-  useEffect(() => {
-    // Show floating elements after main animation
-    const timer = setTimeout(() => {
-      setShowFloatingElements(true);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <MotionBox
@@ -148,8 +138,8 @@ const Introduction = () => {
       />
 
 
-      {/* Main content container with glassmorphism */}
-      <Box
+      {/* Main content container */}
+      <MotionBox
         display="flex"
         flexDirection={{ base: "column", md: "row" }}
         alignItems="center"
@@ -164,24 +154,35 @@ const Introduction = () => {
         borderRadius="16px"
         border="2px solid rgba(0, 0, 0, 0.15)"
         boxShadow="0 8px 30px rgba(0, 0, 0, 0.12)"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <VStack align="flex-start" spacing={4} flex="1">
+        <VStack 
+          align="flex-start" 
+          spacing={4} 
+          flex="1" 
+          minW={{ base: "300px", md: "500px" }}
+        >
           <Box position="relative">
-          <VStack align="flex-start" spacing={{ base: 1, md: 2 }}>
-            <Text fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }} fontWeight={400} color="gray.900" lineHeight="1.1">
+          <VStack 
+            align="flex-start" 
+            spacing={{ base: 1, md: 2 }}
+          >
+            <Box fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }} fontWeight={400} color="gray.900" lineHeight="1.1" fontFamily="'Playfair Display', 'Georgia', serif">
               <TypewriterText 
                 text="Software Engineer" 
                 delay={500} 
                 speed={60}
                 onComplete={() => setShowSecondLine(true)}
               />
-            </Text>
+            </Box>
           
             {showSecondLine && (
-              <Text fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }} fontWeight={400} color="gray.900" lineHeight="1.1">
-                <Text display="inline">
+              <Box fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }} fontWeight={400} color="gray.900" lineHeight="1.1" fontFamily="'Playfair Display', 'Georgia', serif">
+                <Box display="inline">
                   <TypewriterText text="& " delay={200} speed={60} showCursor={false} />
-                </Text>
+                </Box>
                 
                 <MotionBox
                   display="inline-block"
@@ -236,23 +237,28 @@ const Introduction = () => {
                   </Text>
                 </MotionBox>
                 
-                <Text display="inline" ml={2}>
+                <Box display="inline" ml={2}>
                   <TypewriterText 
                     text="Engineer" 
                     delay={1000} 
                     speed={60}
                     onComplete={() => setShowDescription(true)}
                   />
-                </Text>
-              </Text>
+                </Box>
+              </Box>
             )}
           </VStack>
           
           </Box>
         </VStack>
       
-      <VStack align="flex-start" spacing={4} flex="0.6" maxW="500px">
-        <AnimatePresence>
+      <VStack 
+        align="flex-start" 
+        spacing={4} 
+        flex="0.6" 
+        maxW="500px"
+      >
+        <AnimatePresence mode="wait">
           {showDescription && (
             <MotionBox
               initial={{ opacity: 0, y: 20 }}
@@ -282,24 +288,49 @@ const Introduction = () => {
               />
               
               {/* Call to action hint */}
-              <MotionText
+              <MotionBox
                 mt={6}
-                fontSize="sm"
-                color="gray.600"
-                fontWeight={500}
-                letterSpacing="wider"
-                textTransform="uppercase"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 1 }}
               >
-                Explore my work ↓
-              </MotionText>
+                <ChakraLink
+                  as={RouterLink}
+                  to="/portfolio"
+                  fontSize="sm"
+                  color="gray.600"
+                  fontWeight={500}
+                  letterSpacing="wider"
+                  textTransform="uppercase"
+                  textDecoration="none"
+                  position="relative"
+                  _hover={{
+                    color: "gray.900",
+                    "&::after": {
+                      transform: "scaleX(1)",
+                    }
+                  }}
+                  _after={{
+                    content: '""',
+                    position: "absolute",
+                    bottom: "-2px",
+                    left: "0",
+                    right: "0",
+                    height: "1px",
+                    background: "gray.900",
+                    transform: "scaleX(0)",
+                    transformOrigin: "left",
+                    transition: "transform 0.3s ease",
+                  }}
+                >
+                  Explore my work →
+                </ChakraLink>
+              </MotionBox>
             </MotionBox>
           )}
         </AnimatePresence>
       </VStack>
-      </Box>
+      </MotionBox>
     </MotionBox>
   );
 };

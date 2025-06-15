@@ -24,7 +24,7 @@ const projects = [
     id: 'mox-ai',
     title: 'Mox AI Platform',
     description: 'Enterprise-grade AI platform featuring LLM chat capabilities, intelligent agents with RAG, vector search, and distributed data processing for scalable AI applications.',
-    image: '/moxai.png',
+    image: '/augie-gen-ai-assistant-pro-tip.webp',
     tags: ['Next.js', 'FastAPI', 'PostgreSQL', 'Milvus', 'Redis'],
     status: 'In Development',
     features: [
