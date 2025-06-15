@@ -6,7 +6,6 @@ import {
   Text, 
   Container,
   HStack,
-  Icon,
   IconButton,
   useColorModeValue 
 } from "@chakra-ui/react";
@@ -95,7 +94,7 @@ const Header = () => {
             <HStack spacing={3} ml={4} divider={<Box height="20px" width="1px" bg={borderColor} />}>
               <IconButton
                 as={ChakraLink}
-                href="https://www.linkedin.com/in/tianye-fan"
+                href="https://www.linkedin.com/in/tianyefan"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
