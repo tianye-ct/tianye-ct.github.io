@@ -1,70 +1,132 @@
-# Getting Started with Create React App
+# Tianye's Portfolio Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive portfolio website built with React and Chakra UI, featuring dark mode support and smooth animations.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### Core Features
+- **Responsive Design**: Mobile-first approach with breakpoints for all devices
+- **Dark Mode**: Toggle between light and dark themes with persistence
+- **Smooth Animations**: Framer Motion powered transitions and micro-interactions
+- **Modern UI**: Clean, minimalist design with Chakra UI components
 
-### `npm start`
+### Pages
+- **Home**: Animated introduction with typewriter effect and gradient animations
+- **Portfolio**: Showcase of projects with detailed views and technology stacks
+- **Blog**: Technical blog with markdown support and syntax highlighting
+- **About**: Personal page with hobbies, interests, and goals
+- **404**: Custom error page with animations
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Components
+- **Mobile Navigation**: Hamburger menu with smooth drawer animation
+- **Footer**: Contact information, social links, and site navigation
+- **Loading Skeletons**: Reusable loading states for better UX
+- **Scroll to Top**: Automatic scroll on navigation for better user experience
+- **Color Mode Toggle**: Easy theme switching with icon animations
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+- **React 18**: Modern React with hooks
+- **Chakra UI**: Component library with built-in accessibility
+- **Framer Motion**: Animation library for smooth transitions
+- **React Router v6**: Client-side routing
+- **React Markdown**: Blog content rendering
+- **React Syntax Highlighter**: Code block highlighting
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+### Prerequisites
+- Node.js 14+ and npm
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/tianye-ct/tianye-ct.github.io.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Navigate to project directory
+cd tianye-ct.github.io/tianye-ct
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Install dependencies
+npm install
 
-### `npm run eject`
+# Start development server
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Available Scripts
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `npm start` - Runs the app in development mode (http://localhost:3000)
+- `npm run build` - Builds the app for production
+- `npm test` - Launches the test runner
+- `npm run eject` - Ejects from Create React App (one-way operation)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+src/
+├── components/
+│   ├── Blog/
+│   │   ├── BlogList.jsx
+│   │   └── BlogPost.jsx
+│   ├── Portfolio/
+│   │   ├── PortfolioList.jsx
+│   │   └── ProjectDetail.jsx
+│   ├── Header.jsx
+│   ├── Footer.jsx
+│   ├── Introduction.jsx
+│   ├── ColorModeToggle.jsx
+│   ├── LoadingSkeleton.jsx
+│   └── ScrollToTop.jsx
+├── pages/
+│   ├── About.jsx
+│   ├── Blog.jsx
+│   ├── Portfolio.jsx
+│   └── NotFound.jsx
+├── content/
+│   └── blog/
+│       └── [markdown files]
+├── theme.js
+├── App.jsx
+└── index.jsx
+```
 
-## Learn More
+## Recent Updates (Latest)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Added responsive mobile navigation with hamburger menu
+- Implemented dark mode with custom theme configuration
+- Created professional footer with contact information
+- Built custom 404 error page
+- Added loading skeleton components
+- Redesigned About page with personal touch
+- Fixed color consistency across light/dark modes
+- Added automatic scroll-to-top on navigation
+- Enhanced blog styling with proper color theming
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Customization
 
-### Code Splitting
+### Theme
+Edit `src/theme.js` to customize colors, fonts, and component styles.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Content
+- Portfolio projects: Update the projects array in `PortfolioList.jsx`
+- Blog posts: Add markdown files to `src/content/blog/`
+- About page: Modify hobbies, interests, and goals in `About.jsx`
 
-### Analyzing the Bundle Size
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The site is configured for GitHub Pages deployment. After building:
 
-### Making a Progressive Web App
+```bash
+npm run build
+# Deploy the build folder to GitHub Pages
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## License
 
-### Advanced Configuration
+This project is open source and available under the MIT License.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Contact
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Email: tf275@cornell.edu
+- LinkedIn: [linkedin.com/in/tianyefan](https://www.linkedin.com/in/tianyefan)
+- GitHub: [github.com/tianye-ct](https://github.com/tianye-ct)
