@@ -14,7 +14,7 @@ const Introduction = () => {
       justifyContent="center" // Centered content for better mobile experience
       padding={{ base: "10px", md: "20px" }} // Responsive padding
       backgroundColor="white"
-      fontFamily="'Helvetica Neue', Arial, sans-serif"
+      fontFamily="'Playfair Display', 'Georgia', serif"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 2 }}
@@ -38,6 +38,8 @@ const Introduction = () => {
           initial={{ x: -200, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
+          fontFamily="'Georgia', 'Times New Roman', serif"
+          lineHeight={1.6}
         >
           I'm Tianye Fan, a recent graduate Software & Machine Learning Engineer. I am interested in developing
           innovative, data-driven solutions that optimize performance and achieve with software and ML tools.
