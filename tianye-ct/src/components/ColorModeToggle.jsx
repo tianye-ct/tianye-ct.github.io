@@ -9,10 +9,10 @@ const ColorModeToggle = () => {
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
   const iconColor = useColorModeValue('gray.600', 'yellow.400');
   const hoverBg = useColorModeValue('gray.100', 'gray.700');
-  const tooltipLabel = useColorModeValue('Switch to dark mode', 'Switch to light mode');
+  
 
   return (
-    <Tooltip label={tooltipLabel} placement="bottom">
+    <Tooltip placement="bottom">
       <MotionIconButton
         aria-label="Toggle color mode"
         icon={<SwitchIcon />}

@@ -83,7 +83,7 @@ const Header = () => {
               _hover={{ opacity: 0.8 }}
               transition="opacity 0.2s"
             >
-              Tianye @
+              Tianye @ 25
             </Heading>
           </ChakraLink>
           
